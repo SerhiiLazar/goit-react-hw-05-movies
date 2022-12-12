@@ -1,35 +1,19 @@
-import * as API from '../../api/api'
-import { useEffect } from 'react';
-
+import { Routes, Route } from "react-router-dom";
+// import * as API from '../../api/api'
+// import { useEffect } from 'react';
+import {Wrapper} from './App.styled';
+import {SharedLayout} from '../SharedLayout/SharedLayout';
+import {Home} from '../../pages/Home/Home';
 
 export const App = () => {
-useEffect(()=>{
-  async function fetchMoviTrending() {
-    try{
-      const moviTrending = await API.getMoviTrending();
-
-      console.log(moviTrending)
-    }catch(error){
-      alert('Eror');
-    };
-  }
-  console.log(fetchMoviTrending());
-}, [])
   return (
-    <div
-
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-      
-    </div>
+    <Wrapper>
+      <Routes>
+        <Route path="/" element={<SharedLayout  />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+    </Wrapper>
   );
 };
 
