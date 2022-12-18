@@ -2,7 +2,7 @@ import * as API from '../../api/api';
 import { useEffect, useState } from 'react';
 import { Main, Title, List, MoviLink, NavItem } from './Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [trendMovis, setTrendMovis] = useState([]);
   useEffect(() => {
     async function fetchMoviTrending() {
@@ -30,3 +30,5 @@ export const Home = () => {
     </Main>
   );
 };
+
+export default Home;
