@@ -16,3 +16,13 @@ export const Score = styled.p``;
 
 export const Overview = styled.h3``;
 
+export const OverviewContent = styled.p``;
+
+export const Ganres = styled.h3``;
+
+export const GanresContent = styled.p``;
+
+
+
+
+

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import {useParams } from 'react-router-dom';
-import {Main, Box, PosterImg, DetailsMovie, Title, Score, Overview } from './MovieDetails.styled';
+import {useParams, Outlet} from 'react-router-dom';
+import {Main, Box, PosterImg, DetailsMovie, Title, Score, Overview, OverviewContent, Ganres, GanresContent } from './MovieDetails.styled';
 
 import * as API from '../../api/api';
 
@@ -34,11 +34,15 @@ const MovieDetails = () => {
                 <DetailsMovie>
                     <Title>{movieDetails.title}</Title>
                     <Score>
-                        User score: {Math.round(movieDetails.vot_average * 10)}%
+                        User score: {Math.round(movieDetails.vote_average * 10)}%
                     </Score>
-                    <Overview></Overview>
+                    <Overview>Overview</Overview>
+                    <OverviewContent>{movieDetails.overview}</OverviewContent>
+                    <Ganres>Ganres</Ganres>
+                    <GanresContent>{movieDetails.genres.map(genre => genre.name).join(', ')}</GanresContent>
                 </DetailsMovie>
             </Box>
+            <Outlet />
         </Main>
     )
 }
