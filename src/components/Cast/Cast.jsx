@@ -32,7 +32,7 @@ export const Cast = () => {
             <List>
                 {movieCredits && 
                     movieCredits.cast.map(({cast_id, profile_path, name, character}) => (
-                        <Link  id={cast_id}>
+                        <Link  key={cast_id}>
                             <Img 
                             src={profile_path 
                             ? `https://image.tmdb.org/t/p/w500${profile_path}`

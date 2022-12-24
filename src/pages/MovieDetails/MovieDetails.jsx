@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation, NavLink, Outlet } from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import {
   Main,
   Box,
@@ -15,6 +15,7 @@ import {
   BlokInfoTitle,
   BlokInfoList,
   BlokInfoItem,
+  NavItem,
 } from './MovieDetails.styled';
 import { BackLink } from '../../components/BackLink/BackLink';
 import * as API from '../../api/api';
@@ -70,9 +71,12 @@ const MovieDetails = () => {
         </BlokInfoTitle>
         <BlokInfoList>
             <BlokInfoItem>
-                <NavLink to="cast" state={{...location.state}}>
+                <NavItem to="cast" state={{...location.state}}>
                     Cast
-                </NavLink>
+                </NavItem>
+                <NavItem to="reviews" state={{...location.state}}>
+                    Reviews
+                </NavItem>
             </BlokInfoItem>
         </BlokInfoList>
       </BlokInfo>
