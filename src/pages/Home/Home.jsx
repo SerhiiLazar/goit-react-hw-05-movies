@@ -1,7 +1,7 @@
 import * as API from '../../api/api';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Main, Title, List, MoviLink, NavItem } from './Home.styled';
+import { Main, Title, List, MoviLink, NavItem, PosterImg } from './Home.styled';
 
 const Home = () => {
   const [trendMovis, setTrendMovis] = useState([]);
@@ -25,9 +25,15 @@ const Home = () => {
     <Main>
       <Title>Trending Today</Title>
       <List>
-        {trendMovis.map(({id, title}) => (
+        {trendMovis.map(({id, title, poster_path}) => (
           <MoviLink key={id}>
-            <NavItem to={`movies/${id}`} state={{from: location}}>{title}</NavItem>
+            <NavItem to={`movies/${id}`} state={{from: location}}>
+              <PosterImg
+              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+              alt={title}
+              />
+              {title}
+              </NavItem>
           </MoviLink>
         ))}
       </List>

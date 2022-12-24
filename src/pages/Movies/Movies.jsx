@@ -1,7 +1,9 @@
-import {NavLink, useSearchParams, useLocation} from 'react-router-dom';
+import {useSearchParams, useLocation} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import {Main, MovieList, MovieItem} from './Movies.styled';
+import {Main, MovieList, MovieItem, PosterImg, NavItem} from './Movies.styled';
 import * as API from '../../api/api';
+import {SearchBox} from '../../components/SearchBox/SearchBox';
+
 
 const Movies = () => {
     const [movie, setMovie] = useState(null);
@@ -29,15 +31,32 @@ const Movies = () => {
         fetchSearchMovie();
     }, [movieName]);
 
+    const onSubmit = e => {
+        e.preventDefault();
+        const search = e.currentTarget;
+
+        if(search.elements.query.value.trim() === ''){
+            alert('Nothing entered in the search field, please enter');
+        return;
+        }
+        setSearchParams({ query: search.elements.query.value});
+        search.reset();
+    }
+
     return (
         <Main>
+            <SearchBox onSubmit={onSubmit} />
             {movie && (
                 <MovieList>
-                    {movie.map(({id, title}) => (
+                    {movie.map(({id, title, poster_path}) => (
                         <MovieItem key={id}>
-                            <NavLink to={`${id}`} status={{ from: location }}>
+                            <NavItem to={`${id}`} status={{ from: location }}>
+                            <PosterImg
+                                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                                alt={title}
+                                />
                                 {title}
-                            </NavLink>
+                            </NavItem>
                         </MovieItem>
                     ))}
                 </MovieList>
