@@ -16,13 +16,16 @@ import {
   BlokInfoList,
   BlokInfoItem,
 } from './MovieDetails.styled';
-
+import { BackLink } from '../../components/BackLink/BackLink';
 import * as API from '../../api/api';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const { id } = useParams();
   const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/";
+
+
 
   useEffect(() => {
     async function fetchMovieDetails() {
@@ -42,6 +45,7 @@ const MovieDetails = () => {
 
   return (
     <Main>
+      <BackLink to={backLinkHref}>Back to products</BackLink>
       <Box>
         <PosterImg
           src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}

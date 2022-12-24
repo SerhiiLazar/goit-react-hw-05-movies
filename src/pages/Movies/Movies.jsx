@@ -39,6 +39,8 @@ const Movies = () => {
             alert('Nothing entered in the search field, please enter');
         return;
         }
+
+
         setSearchParams({ query: search.elements.query.value});
         search.reset();
     }
@@ -50,7 +52,7 @@ const Movies = () => {
                 <MovieList>
                     {movie.map(({id, title, poster_path}) => (
                         <MovieItem key={id}>
-                            <NavItem to={`${id}`} status={{ from: location }}>
+                            <NavItem to={`${id}`} state={{ from: location }}>
                             <PosterImg
                                 src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                                 alt={title}
