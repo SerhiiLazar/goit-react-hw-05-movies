@@ -24,9 +24,7 @@ const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const { id } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/";
-
-
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     async function fetchMovieDetails() {
@@ -34,7 +32,7 @@ const MovieDetails = () => {
         const movieDetails = await API.getMovieDetails(id);
         setMovieDetails(movieDetails);
       } catch (error) {
-        alert('ooops');
+        alert('Oops something went wrong, try again.');
       }
     }
     fetchMovieDetails();
@@ -66,18 +64,16 @@ const MovieDetails = () => {
         </DetailsMovie>
       </Box>
       <BlokInfo>
-        <BlokInfoTitle>
-            Addition Information
-        </BlokInfoTitle>
+        <BlokInfoTitle>Addition Information</BlokInfoTitle>
         <BlokInfoList>
-            <BlokInfoItem>
-                <NavItem to="cast" state={{...location.state}}>
-                    Cast
-                </NavItem>
-                <NavItem to="reviews" state={{...location.state}}>
-                    Reviews
-                </NavItem>
-            </BlokInfoItem>
+          <BlokInfoItem>
+            <NavItem to="cast" state={{ ...location.state }}>
+              Cast
+            </NavItem>
+            <NavItem to="reviews" state={{ ...location.state }}>
+              Reviews
+            </NavItem>
+          </BlokInfoItem>
         </BlokInfoList>
       </BlokInfo>
       <Outlet />

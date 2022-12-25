@@ -7,33 +7,31 @@ const Home = () => {
   const [trendMovis, setTrendMovis] = useState([]);
   const location = useLocation();
 
-  
   useEffect(() => {
     async function fetchMoviTrending() {
       try {
         const trendMovis = await API.getMoviTrending();
         setTrendMovis(trendMovis.results);
-        
       } catch (error) {
-        alert('Eror');
+        alert('Oops something went wrong, try again.');
       }
     }
     fetchMoviTrending();
   }, []);
-  
+
   return (
     <Main>
       <Title>Trending Today</Title>
       <List>
-        {trendMovis.map(({id, title, poster_path}) => (
+        {trendMovis.map(({ id, title, poster_path }) => (
           <MoviLink key={id}>
-            <NavItem to={`movies/${id}`} state={{from: location}}>
+            <NavItem to={`movies/${id}`} state={{ from: location }}>
               <PosterImg
-              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-              alt={title}
+                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                alt={title}
               />
               {title}
-              </NavItem>
+            </NavItem>
           </MoviLink>
         ))}
       </List>

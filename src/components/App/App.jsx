@@ -1,13 +1,12 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 // import * as API from '../../api/api'
 // import { useEffect } from 'react';
-import { lazy } from "react";
-import {Wrapper} from './App.styled';
+import { lazy } from 'react';
+import { Wrapper } from './App.styled';
 // import {SharedLayout} from '../SharedLayout/SharedLayout';
 // import {Home} from '../../pages/Home/Home';
 // import {Movies} from '../../pages/Movies/Movies';
 // import { MovieDetails } from "../../pages/MovieDetails/MovieDetails";
-
 
 const SharedLayout = lazy(() => import('../SharedLayout'));
 const Home = lazy(() => import('../../pages/Home'));
@@ -20,7 +19,7 @@ export const App = () => {
   return (
     <Wrapper>
       <Routes>
-        <Route path="/" element={<SharedLayout  />}>
+        <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
           <Route path="movies/:id" element={<MovieDetails />}>
@@ -32,6 +31,3 @@ export const App = () => {
     </Wrapper>
   );
 };
-
-
-
