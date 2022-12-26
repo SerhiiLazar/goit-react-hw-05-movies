@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Section, List, Link, Img, ActorName, Character } from './Cast.styled';
+import { Section, List, Link, Img, ActorName, Character, ReviewsNotFound } from './Cast.styled';
 import * as API from '../../api/api';
 
 export const Cast = () => {
@@ -20,10 +20,11 @@ export const Cast = () => {
   }, [id]);
 
   return (
-    <Section>
+    movieCredits && (
+      <Section>
+      {movieCredits.cast.length > 0 ? (
       <List>
-        {movieCredits &&
-          movieCredits.cast.map(
+        {movieCredits.cast.map(
             ({ cast_id, profile_path, name, character }) => (
               <Link key={cast_id}>
                 <Img
@@ -37,10 +38,16 @@ export const Cast = () => {
                 <ActorName>{name}</ActorName>
                 <Character>{character}</Character>
               </Link>
-            )
+            ))}
+      </List> 
+      ) : (
+          <ReviewsNotFound>
+            We don`t have any cast for this movie
+          </ReviewsNotFound>
           )}
-      </List>
     </Section>
+    )
+    
   );
 };
 

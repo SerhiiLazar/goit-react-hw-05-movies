@@ -47,7 +47,10 @@ const MovieDetails = () => {
       <BackLink to={backLinkHref}>Back to products</BackLink>
       <Box>
         <PosterImg
-          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+          src={movieDetails.poster_path 
+            ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
+            : `https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`
+          }
           alt={movieDetails.title}
         />
         <DetailsMovie>

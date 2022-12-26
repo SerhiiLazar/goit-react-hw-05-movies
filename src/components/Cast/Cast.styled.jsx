@@ -33,3 +33,4 @@ export const ActorName = styled.p``;
 
 export const Character = styled.p``;
 
+export const ReviewsNotFound = styled.p``;

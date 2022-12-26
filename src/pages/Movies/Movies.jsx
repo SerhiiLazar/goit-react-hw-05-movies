@@ -58,7 +58,10 @@ const Movies = () => {
             <MovieItem key={id}>
               <NavItem to={`${id}`} state={{ from: location }}>
                 <PosterImg
-                  src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                  src={poster_path
+                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    : `https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`
+                  }
                   alt={title}
                 />
                 {title}
